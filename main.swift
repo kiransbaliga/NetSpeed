@@ -24,8 +24,8 @@ class NetworkMonitor {
             let deltaIn = bytesIn >= lastBytesIn ? bytesIn - lastBytesIn : bytesIn
             let deltaOut = bytesOut >= lastBytesOut ? bytesOut - lastBytesOut : bytesOut
             speed = Speed(
-                download: Double(deltaIn) * 8.0 / elapsed,
-                upload: Double(deltaOut) * 8.0 / elapsed
+                download: Double(deltaIn) / elapsed,
+                upload: Double(deltaOut) / elapsed
             )
         }
 
@@ -67,13 +67,13 @@ class NetworkMonitor {
 
 // MARK: - Formatting
 
-func formatSpeed(_ bps: Double) -> String {
-    if bps >= 1_000_000_000 {
-        return String(format: "%.1f Gbps", bps / 1_000_000_000)
-    } else if bps >= 1_000_000 {
-        return String(format: "%.1f Mbps", bps / 1_000_000)
+func formatSpeed(_ bytesPerSec: Double) -> String {
+    if bytesPerSec >= 1_073_741_824 { // 1 GB
+        return String(format: "%.1f GB/s", bytesPerSec / 1_073_741_824)
+    } else if bytesPerSec >= 1_048_576 { // 1 MB
+        return String(format: "%.1f MB/s", bytesPerSec / 1_048_576)
     } else {
-        return String(format: "%.0f Kbps", bps / 1_000)
+        return String(format: "%.0f KB/s", bytesPerSec / 1_024)
     }
 }
 
@@ -93,7 +93,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if let button = statusItem.button {
             button.font = NSFont.monospacedSystemFont(ofSize: 10, weight: .regular)
-            button.title = "↑ 0 Kbps  ↓ 0 Kbps"
+            button.title = "↑ 0 KB/s  ↓ 0 KB/s"
         }
 
         // Build menu

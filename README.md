@@ -14,13 +14,13 @@
 ## 🚀 Features
 
 - **Real-time Monitoring**: Displays live upload (↑) and download (↓) speeds.
-- **Auto-Scaling Units**: Automatically switches between Kbps, Mbps, and Gbps.
+- **Auto-Scaling Units**: Automatically switches between KB/s, MB/s, and GB/s.
 - **Ultra Lightweight**: Compiled binary is only ~64KB. Uses negligible CPU and RAM.
 - **Native Implementation**: Written in Swift using low-level system APIs (`getifaddrs`). No external frameworks or dependencies.
 - **Unobtrusive**: Lives quietly in your menu bar. No Dock icon.
 - **Auto-Start**: Includes a simple script to run at login.
 
-## dö Installation
+## 🚀 Installation
 
 ### Option 1: Download App (Recommended)
 1. Go to the [Releases](https://github.com/kiransbaliga/NetSpeed/releases) page.
@@ -43,7 +43,7 @@ bash create_icon.sh
 
 ## 🛠 Usage
 
-- The app sits in your menu bar showing: `↑ 0.0 Kbps  ↓ 0.0 Kbps`
+- The app sits in your menu bar showing: `↑ 0 KB/s  ↓ 0 KB/s`
 - Speeds update every 2 seconds.
 - Click the metrics to access the **Quit** option.
 
